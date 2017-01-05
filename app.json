@@ -1,0 +1,5 @@
+{
+  "name": "Vehicle Lookup",
+  "description": "Lookup a vehicle description by its registration number",
+  "image": "heroku/scala",
+}
