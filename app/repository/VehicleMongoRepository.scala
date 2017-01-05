@@ -18,9 +18,8 @@ class VehicleMongoRepository @Inject()(reactiveMongoApi: ReactiveMongoApi) exten
 
   private implicit lazy val collection = reactiveMongoApi.database.map(_.collection[JSONCollection]("vehicles"))
 
-
   private def execute[T](op: JSONCollection => Future[T]): Future[T] = implicitly[Future[JSONCollection]] flatMap op
 
   override def find(registration: String) =
-    execute(_.find(Doc("reg" -> registration)).cursor[Vehicle]().collect[Vector](maxDocs = 1, Cursor.FailOnError[Vector[Vehicle]]()))
+    execute(_.find(Doc("reg" -> registration)).cursor[Vehicle]().collect[List](maxDocs = 1, Cursor.FailOnError[List[Vehicle]]()))
 }

@@ -1,1 +1,2 @@
-GET           /v1/                                      controllers.HealthCheckController.ping
+GET        /v1/                     controllers.HealthCheckController.ping
+GET        /v1/vehicles/:reg        controllers.VehicleController.list(reg:String)
